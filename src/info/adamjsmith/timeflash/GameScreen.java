@@ -1,25 +1,56 @@
 package info.adamjsmith.timeflash;
 
 import info.adamjsmith.framework.Game;
+import info.adamjsmith.framework.Graphics;
 import info.adamjsmith.framework.Screen;
 
 public class GameScreen extends Screen {
 
+	World world;
+	Level level;
+	
 	public GameScreen(Game game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		world = new World();
+		level = new Level();
 	}
 
 	@Override
 	public void update(float deltaTime) {
-		// TODO Auto-generated method stub
+		level.update(deltaTime);
 		
 	}
 
 	@Override
 	public void present(float deltaTime) {
-		// TODO Auto-generated method stub
+		drawWorld(world);
 		
+	}
+	
+	public void drawWorld(World world) {
+		drawLevel(level);
+	}
+	
+	public void drawLevel(Level level) {
+		Graphics g = game.getGraphics();
+		
+		int[][] levelArray = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+							  {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+							  {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+							  {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+							  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+							  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+							  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0},
+							  {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
+							  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+		
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 16; j++) {
+				if (levelArray[i][j] == 1) {
+					g.drawPixmap(Assets.block, j * 77, i * 77);
+				}
+			}
+		}
 	}
 
 	@Override
