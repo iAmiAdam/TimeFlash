@@ -14,5 +14,6 @@ public class World {
 	
 	public void update(float deltaTime) {
 		level.advance(deltaTime);
+		level.move(deltaTime);
 	}
 }

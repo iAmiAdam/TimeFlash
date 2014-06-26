@@ -47,10 +47,17 @@ public class GameScreen extends Screen {
 		int[][] level = world.level.levelArray;
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 16; j++) {
-				if (level[i][j] == 1) {
+				if (level[i][j] != 0) {
 					g.drawPixmap(Assets.block, j * 77, i * 77);
 				}
 			}
+		}
+		
+		Player player = world.player;
+		Life body;
+		for (int i = 0; i < player.lives.size(); i++) {
+			body = player.lives.get(i);
+			g.drawPixmap(Assets.body, body.x * 77, body.y * 77);
 		}
 	}
 
