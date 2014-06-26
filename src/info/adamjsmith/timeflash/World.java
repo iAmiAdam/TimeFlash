@@ -11,4 +11,8 @@ public class World {
 		player = new Player();
 		level = new Level();
 	}
+	
+	public void update(float deltaTime) {
+		level.advance(deltaTime);
+	}
 }
