@@ -13,9 +13,9 @@ public class Level {
 						  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	
 	public void advance(float deltaTime) {
-		for (int i = 0; i < levelArray.length; i++) {
-			for (int j = 0; j <levelArray[i].length; j++) {
-				
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < levelArray[i].length -1; j++) {
+				levelArray[i][j] = levelArray[i][j+1];
 			}
 		}
 	}

@@ -17,7 +17,7 @@ public class GameScreen extends Screen {
 
 	@Override
 	public void update(float deltaTime) {
-		level.update(deltaTime);
+		level.advance(deltaTime);
 		
 	}
 
@@ -28,7 +28,9 @@ public class GameScreen extends Screen {
 	}
 	
 	public void drawWorld(World world) {
-		drawLevel(level);
+		Graphics g = game.getGraphics();
+		
+		Level level = world.level;
 	}
 	
 	public void drawLevel(Level level) {
